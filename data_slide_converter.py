@@ -8,14 +8,17 @@ def convert_data():
     # Get the input data from the textbox
     input_data = text_area.get("1.0", "end-1c")
 
-    # Check if "RC" is present in the input data
+    # Check if "RC" or "rc" is present in the input data
     if "RC" not in input_data and "rc" not in input_data:
         output_area.delete("1.0", "end")
         output_area.insert("1.0", "Error: Input data must contain 'RC' or 'rc'")
         return
 
+    # Convert all occurrences of "rc" to "RC"
+    input_data = input_data.replace("rc", "RC")
+
     # Split input data by "RC" and join with "\nRC"
-    input_data = "\nRC".join(input_data.split("RC" or "rc")[1:])
+    input_data = "\nRC".join(input_data.split("RC")[1:])
     input_data = "RC" + input_data
 
     # Add the '2D' text to the input text
