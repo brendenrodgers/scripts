@@ -3,6 +3,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import scrolledtext
+import clipboard
 
 def convert_data():
     # Get the input data from the textbox
@@ -35,6 +36,14 @@ def clear_input():
 def clear_output():
     output_area.delete("1.0", "end")
 
+# Function to copy output to clipboard
+def copy_output():
+    if output_area is not None:
+        output = output_area.get("1.0", "end")
+        clipboard.copy(output)
+    else:
+        output_area.insert(1.0, "ERROR: Nothing copied")
+
 root = tk.Tk()
 
 root.title("Data Slide Conversion")
@@ -51,6 +60,8 @@ output_area.grid(column=0, row=4, pady=10, padx=10)
 ttk.Button(root, text="Convert Data", command=convert_data).grid(column=0, row=3, pady=10)
 ttk.Button(root, text="Clear Input", command=clear_input).grid(column=1, row=2, pady=10)
 ttk.Button(root, text="Clear Output", command=clear_output).grid(column=1, row=4, pady=10)
+ttk.Button(root, text="Copy Output", command=copy_output).grid(column=0, row=5, pady=10)
+
 # placing cursor in text area
 text_area.focus()
 root.mainloop()
