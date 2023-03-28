@@ -64,4 +64,6 @@ ttk.Button(root, text="Copy Output", command=copy_output).grid(column=0, row=5, 
 
 # placing cursor in text area
 text_area.focus()
+
+# Main program loop
 root.mainloop()
