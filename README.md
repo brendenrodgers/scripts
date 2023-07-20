@@ -8,4 +8,4 @@ This is a script that will assist with a converstion replacing '-' with '-2D' wi
 
 ## disk_usage.py
 
-This will eventually be a script to check disk usage 
+Script to check disk usage.
